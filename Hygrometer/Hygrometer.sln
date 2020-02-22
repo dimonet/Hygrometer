@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Hygrometer", "Hygrometer\Hygrometer.pyproj", "{6FA3E9C9-4766-4FDA-8CB7-B861196ABD57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FA3E9C9-4766-4FDA-8CB7-B861196ABD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FA3E9C9-4766-4FDA-8CB7-B861196ABD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08AB77F8-BB5C-4EA4-BB04-BE62930CCA70}
+	EndGlobalSection
+EndGlobal
