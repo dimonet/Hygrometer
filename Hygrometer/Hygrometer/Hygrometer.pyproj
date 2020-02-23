@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>6fa3e9c9-4766-4fda-8cb7-b861196abd57</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Hygrometer.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,19 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Hygrometer.py" />
+    <Compile Include="DataStorage\Amendments.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataStorage\HumidityTables.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Hygrometer.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="main.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataStorage\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
