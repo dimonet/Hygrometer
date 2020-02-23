@@ -22,7 +22,7 @@ class Hygrometer(object):
       valueList = list(amendments.values())
       keyList = list(amendments.keys())
       pos = 0
-      for i in amendments:    
+      for i in amendments:
          if pos < len(valueList) - 1:          
             if round(tempAmount) >= int(keyList[pos]) and round(tempAmount) < int(keyList[pos + 1]):
                return round((tempAmount+valueList[pos]),1)
