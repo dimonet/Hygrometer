@@ -1,22 +1,27 @@
 import math
 class Hygrometer(object):
-   def __init__(self, amendments, wetTable):    
+   def __init__(self, amendments, HumidityTable):    
       self.amendments = amendments
-      self.wetTable = wetTable
+      self.HumidityTable = HumidityTable
   
-   def GetRelativeHumidity(self, dryTemp, wetTemp):        
+   def GetRelativeHumidity(self, dryTemp, wetTemp, errorMsg):        
       CalibDryTemp = self.__GetAmendment(dryTemp, self.amendments['dry'])
       CalibWetTemp = self.__GetAmendment(wetTemp, self.amendments['wet'])
       diff = round((CalibDryTemp - CalibWetTemp), 1)
-      HumidityAmount = self.__GetHumidityAmount(CalibDryTemp, diff, self.wetTable)
+      HumidityAmount = self.__GetHumidityAmount(CalibDryTemp, diff, self.HumidityTable, errorMsg)
+      if HumidityAmount is None:
+         return 
       dryTempDecimal = round((CalibDryTemp%1),1)  # берем десятичную часть с температуры 25.5 -> 0.5
       diffDecimal =  round(diff - self.__RoundByDecimal(diff, 0.5), 1)  # берем десятичную часть с разници          
-      return HumidityAmount+(dryTempDecimal * 2) - ((diffDecimal * 4)/0.5)
+      return round(HumidityAmount+(dryTempDecimal * 2) - ((diffDecimal * 4)/0.5), 2)
   
-   def __GetHumidityAmount(self, dryTemp, diff, wetTable):
+   def __GetHumidityAmount(self, dryTemp, diff, HumidityTable, errorMsg):
       RoundDryTemp = math.floor(dryTemp)            # округление до низа
       RoundDiff = self.__RoundByDecimal(diff, 0.5)  # округляем разницу до ближащего десятичного значения 0.5
-      return wetTable[RoundDryTemp][RoundDiff]
+      try:
+         return HumidityTable[RoundDryTemp][RoundDiff]
+      except:
+         errorMsg.append("The relative humidity can not be calculated regarding to these temperatures. Please check the inputted temperatures or try to select another model")
   
    def __GetAmendment(self, tempAmount, amendments):
       valueList = list(amendments.values())
