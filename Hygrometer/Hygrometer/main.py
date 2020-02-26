@@ -34,6 +34,8 @@ def ValidateInputedValues(telebot, message, strDryTemp, strWetTemp = "0"):
       return False
    return True
 
+
+
 @bot.message_handler(content_types=["text"])
 def any_msg(message):
    print(str(datetime.datetime.now()), " ", str(message.message_id),"  ", "Session has started")
@@ -80,10 +82,11 @@ def SetWetTemp(message):
          RelativeHumidity = Hygrom1.GetRelativeHumidity(_dryTemp, _wetTemp, errorMsg)  
          if len(errorMsg) != 0:
             bot.send_message(message.from_user.id, errorMsg[0])  
-            print(str(datetime.datetime.now()), " ", str(message.message_id),"  ", "Error:", errorMsg[0])            
-            return
-         bot.send_message(message.from_user.id, 'Relative Humidity is:  '+ str(RelativeHumidity) + '%')  
-         print(str(datetime.datetime.now()), " ", str(message.message_id),"  ", "Relative Humidity is", str(RelativeHumidity), '%')
+            print(str(datetime.datetime.now()), " ", str(message.message_id),"  ", "Error:", errorMsg[0])
+            any_msg(message)
+         else:            
+            bot.send_message(message.from_user.id, 'Relative Humidity is:  '+ str(RelativeHumidity) + '%')  
+            print(str(datetime.datetime.now()), " ", str(message.message_id),"  ", "Relative Humidity is", str(RelativeHumidity), '%')         
       except Exception as e:
          print(str(datetime.datetime.now()), "  ", "EXCEPTION: error during RelativeHumidity calculating")
 
