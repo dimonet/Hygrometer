@@ -6,7 +6,7 @@ from Hygrometer import Hygrometer
 from DataStorage.Amendments import Amendment1
 from DataStorage.HumidityTables import HumidityTable1
 from telebot import types
-print(str(datetime.datetime.now()), "Telegram bot (v1.0) has started")
+print(str(datetime.datetime.now()), "Telegram bot (v1.1) has started")
 bot = telebot.TeleBot("925726841:AAEclsVk5bYXshpcMdCOflM1kCzjEpx2nbU")
 
 def isFloat(string):
