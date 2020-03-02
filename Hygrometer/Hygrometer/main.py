@@ -13,14 +13,13 @@ import telebot
 
 API_TOKEN = '925726841:AAEclsVk5bYXshpcMdCOflM1kCzjEpx2nbU'
 
-WEBHOOK_HOST = '34.70.66.245'
+WEBHOOK_HOST = '35.225.166.233'
 WEBHOOK_PORT = 8443  # 443, 80, 88 or 8443 (port need to be 'open')
 WEBHOOK_LISTEN = '0.0.0.0'  # In some VPS you may need to put here the IP addr
 
 WEBHOOK_SSL_CERT = '/home/dimont_mail/keys/url_cert.pem'  # Path to the ssl certificate
 WEBHOOK_SSL_PRIV = '/home/dimont_mail/keys/url_private.key'  # Path to the ssl private key
-#WEBHOOK_SSL_CERT = './keys/url_cert.pem'  # Path to the ssl certificate
-#WEBHOOK_SSL_PRIV = './keys/url_private.key'  # Path to the ssl private key
+
 
 # Quick'n'dirty SSL certificate generation:
 #
@@ -87,9 +86,9 @@ def ValidateInputedValues(telebot, message, strDryTemp, strWetTemp = "0"):
 @bot.message_handler(content_types=["text"])
 def any_msg(message):
    print(str(datetime.datetime.now()), " ", str(message.message_id),"  ", "Session has started")
-   keyboard = types.InlineKeyboardMarkup()
-   callback_VIT1 = types.InlineKeyboardButton(text="VIT1", callback_data="vit1")
-   callback_VIT2 = types.InlineKeyboardButton(text="VIT2", callback_data="vit2")
+   keyboard = telebot.types.InlineKeyboardMarkup()
+   callback_VIT1 = telebot.types.InlineKeyboardButton(text="VIT1", callback_data="vit1")
+   callback_VIT2 = telebot.types.InlineKeyboardButton(text="VIT2", callback_data="vit2")
    keyboard.add(callback_VIT1)
    keyboard.add(callback_VIT2)
    bot.send_message(message.chat.id, "Please select model", reply_markup=keyboard)

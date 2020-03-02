@@ -1,0 +1,5 @@
+fuser -n tcp -k 8443      -kiil procces which uses port8443
+nohup python main.py      -run process in background 
+pgrep -l -u dimont_mail   -returns list of my process
+. env3/bin/activate       -activate Python 3 virtual environment
+deactivate		  -leave the virtual environment
