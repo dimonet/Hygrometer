@@ -4,8 +4,10 @@ import logging
 import ssl
 import datetime
 from Hygrometer import Hygrometer
-from DataStorage.Amendments import Amendment1
-from DataStorage.HumidityTables import HumidityTable1
+from DataStorage.Amendments1 import Amendment1
+from DataStorage.HumidityTable1 import HumidityTable1
+from DataStorage.Amendments2 import Amendment2
+from DataStorage.HumidityTable2 import HumidityTable2
 
 from aiohttp import web
 
@@ -124,9 +126,12 @@ def SetWetTemp(message):
       try:
          _wetTemp = round(float(message.text), 2)   
          print(str(datetime.datetime.now()), " ", str(message.message_id),"  ", "WetTemp = ", str(_wetTemp))
-         Hygrom1 = Hygrometer(Amendment1, HumidityTable1)
+         if _model == 1:
+            Hygrom = Hygrometer(Amendment1, HumidityTable1)
+         else:
+            Hygrom = Hygrometer(Amendment2, HumidityTable2)
          errorMsg = []
-         RelativeHumidity = Hygrom1.GetRelativeHumidity(_dryTemp, _wetTemp, errorMsg)  
+         RelativeHumidity = Hygrom.GetRelativeHumidity(_dryTemp, _wetTemp, errorMsg)  
          if len(errorMsg) != 0:
             bot.send_message(message.from_user.id, errorMsg[0])  
             print(str(datetime.datetime.now()), " ", str(message.message_id),"  ", "Error:", errorMsg[0])

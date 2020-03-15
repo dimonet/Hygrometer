@@ -3,3 +3,16 @@ nohup python main.py      -run process in background
 pgrep -l -u dimont_mail   -returns list of my process
 . env3/bin/activate       -activate Python 3 virtual environment
 deactivate		  -leave the virtual environment
+
+pgrep -l -u dimont_mail   -returns all process run by user dimont_mail
+ps                        -return all my procces
+kill -9 <PID>             -kills process with PID = <PID>
+killall -9 python         -kills process 'python'
+
+
+cpopy file from Cloud Shell to VM:
+$ gcloud compute scp --recurse ~/main.py webhook-bot:~/hygro --zone us-central1-a
+
+cpopy file from VM to Cloud Shell:
+$ gcloud compute scp --recurse webhook-bot:~/examples/ex1.py --zone us-central1-a ~/telebot2
+

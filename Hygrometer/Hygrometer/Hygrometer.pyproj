@@ -21,10 +21,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DataStorage\Amendments.py">
+    <Compile Include="DataStorage\Amendments2.py" />
+    <Compile Include="DataStorage\Amendments1.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataStorage\HumidityTables.py">
+    <Compile Include="DataStorage\HumidityTable1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataStorage\HumidityTable2.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Hygrometer.py">
