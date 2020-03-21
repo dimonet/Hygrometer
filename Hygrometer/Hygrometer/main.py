@@ -1,35 +1,23 @@
-# Bot's name - 'Hygrometerbot' 
-# User name 'hygrometerbot'
 import logging
 import ssl
 import datetime
+import telebot
+import toml
 from Hygrometer import Hygrometer
 from DataStorage.Amendments1 import Amendment1
 from DataStorage.HumidityTable1 import HumidityTable1
 from DataStorage.Amendments2 import Amendment2
 from DataStorage.HumidityTable2 import HumidityTable2
-
 from aiohttp import web
 
-import telebot
-
-API_TOKEN = '925726841:AAEclsVk5bYXshpcMdCOflM1kCzjEpx2nbU'
-
-WEBHOOK_HOST = '35.225.166.233'
-WEBHOOK_PORT = 8443  # 443, 80, 88 or 8443 (port need to be 'open')
-WEBHOOK_LISTEN = '0.0.0.0'  # In some VPS you may need to put here the IP addr
-
-WEBHOOK_SSL_CERT = '/home/dimont_mail/keys/url_cert.pem'  # Path to the ssl certificate
-WEBHOOK_SSL_PRIV = '/home/dimont_mail/keys/url_private.key'  # Path to the ssl private key
-
-
-# Quick'n'dirty SSL certificate generation:
-#
-# openssl genrsa -out webhook_pkey.pem 2048
-# openssl req -new -x509 -days 3650 -key webhook_pkey.pem -out webhook_cert.pem
-#
-# When asked for "Common Name (e.g. server FQDN or YOUR name)" you should reply
-# with the same value in you put in WEBHOOK_HOST
+# reading configuration from Conf file
+config = toml.load('Config.toml')
+API_TOKEN = config.get('Telegram').get('API_TOKEN')
+WEBHOOK_HOST = config.get('ENVIRONMENT').get('WEBHOOK_HOST')
+WEBHOOK_PORT = config.get('ENVIRONMENT').get('WEBHOOK_PORT')
+WEBHOOK_LISTEN = config.get('ENVIRONMENT').get('WEBHOOK_LISTEN')
+WEBHOOK_SSL_CERT = config.get('KEY_PATH').get('WEBHOOK_SSL_CERT')  # Path to the ssl certificate
+WEBHOOK_SSL_PRIV = config.get('KEY_PATH').get('WEBHOOK_SSL_PRIV')  # Path to the ssl private key
 
 WEBHOOK_URL_BASE = "https://{}:{}".format(WEBHOOK_HOST, WEBHOOK_PORT)
 WEBHOOK_URL_PATH = "/{}/".format(API_TOKEN)
