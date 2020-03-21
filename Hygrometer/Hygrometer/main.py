@@ -44,7 +44,7 @@ async def handle(request):
 app.router.add_post('/{token}/', handle)
 
 
-print(str(datetime.datetime.now()), "Telegram bot (v1.1) has started")
+print(str(datetime.datetime.now()), "Telegram bot (v1.3) has started")
 
 def isFloat(string):
     try:
