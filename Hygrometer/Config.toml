@@ -1,0 +1,16 @@
+# Keys
+title = "GCPConfig_DEV"
+
+# Tables
+[Telegram]
+# Bot's name - 'HygroDEVbot'
+# User name 'hygroDEVbot'
+API_TOKEN = '1097007871:AAFYaQqx1PWbaKziLaRBAM6WjsoMY35cCgY'
+
+[WEBHOOK]
+ENABLED = false
+SSL_CERT = '/home/dimont_mail/keys/url_cert.pem'  # Path to the ssl certificate
+SSL_PRIV = '/home/dimont_mail/keys/url_private.key'  # Path to the ssl private key
+HOST = '35.225.166.233'
+PORT = 8443  # 443, 80, 88 or 8443 (port need to be 'open')
+LISTEN = '0.0.0.0'  # In some VPS you may need to put here the IP addr
